@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import { useSelector } from 'react-redux';
 
 function PhotoScreen({navigation}) {
-	const photo = useSelector((state) => state.selectedPhoto?.urls?.full);
+	const photo = useSelector((state) => state.selectedPhoto?.urls?.regular);
 
 	function handlePress() {
 		navigation.goBack();
@@ -14,8 +14,8 @@ function PhotoScreen({navigation}) {
 	return (
 		<ImageBackground source={{ uri: photo }} style={styles.image}>
 			<View style={styles.wrapper}>
-				<TouchableOpacity onPress={handlePress} style={styles.appButtonContainer}>
-					<Text style={styles.appButtonText}>Go Back</Text>
+				<TouchableOpacity onPress={handlePress} style={styles.buttonContainer}>
+					<Text style={styles.buttonText}>Go Back</Text>
 				</TouchableOpacity>
 			</View>
 		</ImageBackground>
@@ -32,14 +32,14 @@ const styles = StyleSheet.create({
 		marginTop: 50,
 		marginLeft: 10
 	},
-	appButtonContainer: {
+	buttonContainer: {
 		elevation: 7,
 		backgroundColor: '#fff',
 		borderRadius: 10,
 		paddingVertical: 8,
 
 	},
-	appButtonText: {
+	buttonText: {
 		fontSize: 15,
 		color: '#000',
 		fontWeight: 'bold',

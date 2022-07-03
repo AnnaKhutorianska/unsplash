@@ -23,7 +23,7 @@ function ListScreen({ navigation }) {
                         id={item.id}
                         description={item.description}
                         userName={item.user}
-                        image={item.urls.thumb}
+                        image={item.urls.regular}
                         navigation={navigation}
                     />
                 )}

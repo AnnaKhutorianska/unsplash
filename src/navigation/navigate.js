@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
+import { SCREENS } from '../constants/screens';
 import ListScreen from '../screens/ListScreen';
 import PhotoScreen from '../screens/PhotoScreen';
 
@@ -12,7 +13,7 @@ function Navigate() {
 		<NavigationContainer>
 			<Stack.Navigator>
 				<Stack.Screen
-					name="ListScreen"
+					name={SCREENS.ListScreen}
 					component={ListScreen}
 					options={{
 						title: 'Unsplash',
@@ -21,8 +22,8 @@ function Navigate() {
 				<Stack.Screen
 					options={{
 						headerShown: false
-					  }}
-					name="PhotoScreen"
+					}}
+					name={SCREENS.PhotoScreen}
 					component={PhotoScreen}
 				/>
 			</Stack.Navigator>

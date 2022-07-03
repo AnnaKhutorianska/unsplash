@@ -2,14 +2,16 @@ import React from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useDispatch } from 'react-redux';
 
+import { SCREENS } from '../constants/screens';
 import { findImage } from '../stores/actions/photosActions';
 
 function PhotoCard({id, description, userName, image, navigation}) {
+	const { first_name, last_name } = userName || {};
 	const dispatch = useDispatch();
 
 	function handlePress(id) {
 		dispatch(findImage(id));
-		navigation.navigate('PhotoScreen')
+		navigation.navigate(SCREENS.PhotoScreen);
 	}
 
 	return (
@@ -19,8 +21,8 @@ function PhotoCard({id, description, userName, image, navigation}) {
 					style={styles.image}
 					source={{uri: image}}
 				/>
-				<Text style={styles.text}>{description}</Text>
-				<Text style={styles.text}>{id}</Text>
+				{description && <Text style={[styles.text, styles.description]}>{description}</Text>}
+				{userName && <Text style={[styles.text, styles.userName]}>{first_name} {last_name}</Text>}
 			</View>
 		</TouchableOpacity>
 	);
@@ -31,19 +33,26 @@ const styles = StyleSheet.create({
 		marginVertical: 10,
     	marginHorizontal: 30,
         borderRadius: 10,
-		backgroundColor: '#e8e8e8',
+		backgroundColor: '#eeeeee',
     },
 	image: {
 		borderTopLeftRadius: 10,
 		borderTopRightRadius: 10,
 		width: '100%',
     	height: 200,
-		resizeMode: 'stretch'
+		resizeMode: 'cover'
 	},
 	text: {
+		color: '#3e3e3e',
+		padding: 5
+	},
+	description: {
 		fontSize: 15,
-		fontWeight: '500',
-		color: '#3e3e3e'
+		fontWeight: '600'
+	},
+	userName: {
+		fontSize: 14,
+		fontStyle: 'italic'
 	}
 });
 
