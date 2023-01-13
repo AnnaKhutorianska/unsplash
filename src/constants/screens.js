@@ -1,4 +1,7 @@
 export const SCREENS = {
-    ListScreen: 'ListScreen',
-    PhotoScreen: 'PhotoScreen'
+    Expenses: 'Expenses',
+    Login: 'Login',
+    Menu: 'Menu',
+    Investment: 'Investment',
+    ProjectsComparison: 'ProjectsComparison'
 };
